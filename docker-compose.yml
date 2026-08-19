@@ -1,0 +1,68 @@
+﻿    driver: bridge
+  ecommerce-network:
+networks:
+
+    driver: local
+  redis-data:
+volumes:
+
+    restart: unless-stopped
+      - ${USERPROFILE}\.aspnet\https:/https:ro
+    volumes:
+      - ecommerce-network
+    networks:
+        condition: service_healthy
+      redis:
+    depends_on:
+      - ConnectionStrings__Redis=redis:6379,abortConnect=false
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_URLS=https://+:8443;http://+:8080
+      - ASPNETCORE_ENVIRONMENT=Production
+    environment:
+      - "7179:8443"
+      - "7178:8080"
+    ports:
+    container_name: ecommerce-app
+      dockerfile: Dockerfile
+      context: .
+    build:
+  app:
+  # ECommerce Application
+
+  #   restart: unless-stopped
+  #     - ecommerce-network
+  #   networks:
+  #     - sqlserver-data:/var/opt/mssql
+  #   volumes:
+  #     - "1433:1433"
+  #   ports:
+  #     ACCEPT_EULA: "Y"
+  #     SA_PASSWORD: "YourPassword@123"
+  #   environment:
+  #   container_name: ecommerce-sqlserver
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  # sqlserver:
+  # Uncomment nếu bạn muốn chạy SQL Server trên Docker
+  # SQL Server (nếu bạn muốn chạy local SQL Server)
+
+    restart: unless-stopped
+      retries: 5
+      timeout: 3s
+      interval: 5s
+      test: ["CMD", "redis-cli", "ping"]
+    healthcheck:
+      - ecommerce-network
+    networks:
+      - redis-data:/data
+    volumes:
+    command: redis-server --appendonly yes
+      - "6379:6379"
+    ports:
+    container_name: ecommerce-redis
+    image: redis:7-alpine
+  redis:
+  # Redis Cache Service
+services:
+
+

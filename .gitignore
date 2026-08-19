@@ -1,0 +1,103 @@
+# =========================
+# Build artifacts
+# =========================
+bin/
+obj/
+out/
+publish/
+
+# =========================
+# Visual Studio / IDE
+# =========================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# =========================
+# Logs & temp
+# =========================
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# =========================
+# NuGet
+# =========================
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+artifacts/
+
+# =========================
+# Test
+# =========================
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# =========================
+# Resharper / tools
+# =========================
+_ReSharper*/
+*.DotSettings.user
+
+# =========================
+# Node (nếu có frontend)
+# =========================
+node_modules/
+
+# =========================
+# Environment & Secrets
+# =========================
+
+# Giữ file config gốc
+appsettings.json
+
+# Ignore config theo môi trường (tránh leak secrets)
+appsettings.Development.json
+appsettings.Staging.json
+appsettings.Production.json
+
+# User secrets (quan trọng)
+secrets.json
+
+# Env files
+.env
+.env.*
+
+# =========================
+# ASP.NET / Hosting
+# =========================
+wwwroot/dist/
+wwwroot/lib/
+
+# IIS Express
+IISExpress/
+
+# Publish profiles (có thể chứa credentials)
+*.pubxml
+*.pubxml.user
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Generated
+# =========================
+Generated/

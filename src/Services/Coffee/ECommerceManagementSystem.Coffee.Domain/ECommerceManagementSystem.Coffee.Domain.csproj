@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include=".\..\..\..\BuildingBlocks\Shared\Common.Logging\Common.Logging.csproj" />
+        <ProjectReference Include=".\..\..\..\BuildingBlocks\ECommerceManagementSystem.ServiceDefaults\ECommerceManagementSystem.ServiceDefaults.csproj" />
+    </ItemGroup>
+</Project>
